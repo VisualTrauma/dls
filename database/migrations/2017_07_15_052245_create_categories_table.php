@@ -14,11 +14,11 @@ class CreateCategoriesTable extends Migration {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('created_by');
-            $table->unsignedInteger('updated_by');
+            $table->unsignedInteger('updated_by')->nullable();
             $table->string('name', 60);
             $table->string('departments', 60);
-            $table->boolean('root');
-            $table->boolean('parent');
+            $table->boolean('root')->default(1);
+            $table->boolean('parent')->default(0);
             $table->tinyInteger('retention_period');
             $table->timestamps();
         });
