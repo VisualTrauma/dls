@@ -168,37 +168,6 @@
     </div>
 </div>
 
-<div class="uk-modal">
-    <div class="uk-modal-dialog">
-        <form class="uk-form-stacked">
-            <!-- REMOVE display: none; PROPERTY TO SHOW UPLOAD PROGRESS -->
-            <div class="uk-overlay-panel uk-flex uk-flex-center uk-flex-middle uk-text-center"
-                 style="z-index: 999; background-color: rgba(255, 255, 255, 0.8); display: none;" v-show="adding">
-                <div class="md-preloader">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="48" width="48" viewbox="0 0 75 75">
-                        <circle cx="37.5" cy="37.5" r="33.5" stroke-width="8"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="uk-margin-medium-bottom">
-                <select class="md-input">
-                    <option value="" disabled selected hidden>Parent</option>
-                    <option></option>
-                </select>
-            </div>
-            <div class="uk-margin-medium-bottom">
-                <textarea class="md-input" rows="3"
-                          placeholder="List all possible attributes you want this category to have. An example will be its unique information like employee name, control number, revision request number etc. To enter multiple attribute name just separate them with a comma."></textarea>
-                <span class="uk-text-small uk-text-bold">Choosing a category with existing attributes will show all attributes assigned to it.</span>
-            </div>
-            <div class="uk-modal-footer uk-text-right">
-                <button type="button" class="md-btn md-btn-success md-btn-wave-light uk-modal-close">Cancel</button>
-                <button class="md-btn md-btn-success md-btn-wave-light">Add attribute/s</button>
-            </div>
-        </form>
-    </div>
-</div>
-
 @yield('modals')
 
 <!-- common functions -->

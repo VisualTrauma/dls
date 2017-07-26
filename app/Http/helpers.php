@@ -3,12 +3,16 @@
 function toCommaSeparatedString($array) {
     $newString = '';
 
-    foreach($array as $item) {
-        if($newString == '') {
-            $newString = $item;
-        } else {
-            $newString = $newString . ', ' . $item;
+    if($array != '') {
+        foreach($array as $item) {
+            if($newString == '') {
+                $newString = $item;
+            } else {
+                $newString = $newString . ', ' . $item;
+            }
         }
+    } else {
+        $newString = '';
     }
 
     return $newString;

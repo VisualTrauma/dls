@@ -10,11 +10,11 @@ class AttributesController extends Controller {
         $attributes = stringToArray($attributes);
 
         foreach($attributes as $attribute) {
-            $attribute = new Attribute();
-            $attribute->category_id = $category_id;
-            $attribute->raw_name = $attribute;
-            $attribute->modified_name = snake_case(camel_case($attribute));
-            $attribute->save();
+            $newAttribute = new Attribute();
+            $newAttribute->category_id = $category_id;
+            $newAttribute->raw_name = $attribute;
+            $newAttribute->modified_name = snake_case(camel_case($attribute));
+            $newAttribute->save();
         }
     }
 }

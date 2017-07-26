@@ -1,11 +1,14 @@
 @extends('layouts.main')
 
+@section('page-title-heading') Categories List @stop
+@section('page-description') Shows all available categories @stop
+
 @section('content')
     <a href="{{ route('categories.create') }}" class="md-btn md-btn-large md-btn-primary md-btn-wave waves-effect waves-button uk-width-2-10 uk-push-8-10">Add new category</a>
     <div class="md-card uk-margin-medium-bottom">
         <div class="md-card-content">
             <div class="uk-overflow-container">
-                <table class="uk-table uk-table-nowrap uk-table-striped">
+                <table class="uk-table uk-table-nowrap">
                     <thead>
                     <tr>
                         <th class="uk-width-3-10 uk-text-center">Name</th>
@@ -18,7 +21,7 @@
                     <tbody>
                     @foreach($categories as $category)
                         <tr>
-                            <td class="uk-text-center">{{ $category->name }}</td>
+                            <td>{{ $category->name }}</td>
                             <td class="uk-text-center">{{ $category->departments }}</td>
                             <td class="uk-text-center">{!! $category->root !!}</td>
                             <td class="uk-text-center">{!! $category->retention_period !!}</td>

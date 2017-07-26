@@ -10924,7 +10924,6 @@ div.kineticjs-content {
 #header_main {
   background: #1976d2;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  padding: 0 25px;
   height: 48px;
   left: 0;
   position: fixed;
@@ -11234,6 +11233,7 @@ div.kineticjs-content {
 }
 .main_logo_top {
   float: left;
+  background-color: white;
   line-height: 48px;
   min-width: 240px;
   display: block;

@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration {
             $table->string('departments', 60);
             $table->boolean('root')->default(1);
             $table->boolean('parent')->default(0);
+            $table->unsignedInteger('parent_id')->nullable();
             $table->tinyInteger('retention_period');
             $table->timestamps();
         });

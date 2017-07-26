@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
-@section('page-title-heading') Create a category @stop
-@section('page-description') Add a new category to the system @stop
+@section('page-title-heading') Edit a category @stop
+@section('page-description') Edi existing categories and its attributes here. @stop
 
 @section('content')
     <div class="md-card">
@@ -12,16 +12,16 @@
                         {{ $error }} <br/>
                     @endforeach
                 </div>
-                <form class="uk-width-medium-1-3" action="{{ route('categories.store') }}" method="post">
-                    {{ csrf_field() }}
+                <form class="uk-width-medium-1-3" action="{{ route('categories.update') }}" method="post">
+                    {{ csrf_field() }} {{ method_field('patch') }}
                     <div class="uk-width-medium-1-1">
                         <div class="uk-form-row">
                             <label>CATEGORY NAME</label>
-                            <input type="text" class="md-input" name="name" value="{{ old('name') }}"/>
+                            <input type="text" class="md-input" name="name" value="{{ $category->name }}"/>
                         </div>
                         <div class="uk-form-row">
                             <label>ATTRIBUTES</label>
-                            <textarea class="md-input" row="3" name="raw_attributes">{{ old('raw_attributes') }}</textarea>
+                            <textarea class="md-input" row="3" name="raw_attributes">{{ $category->raw_attributes }}</textarea>
                             <span class="help-block uk-text-warning">use lowercase letters in declaring attributes and separate them by comma. i.e.
                                 <span class="uk-text-bold">employee name, employee id</span>.</span>
                         </div>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="uk-form-row">
                             <input class="uk-hidden" name="category" value="{{ old('category') }}">
-                             <span class="icheck-inline">
+                            <span class="icheck-inline">
                                             <input type="radio" name="category_type" id="root" data-md-icheck checked/>
                                             <label id="label-root" for="root" class="inline-label">Top Level Category</label>
                                         </span>
@@ -112,9 +112,9 @@
     </script>
 
     <script src="{{ url('js/old_input.js') }}"
-            data-departments='{!! json_encode(old('departments')) !!}'
-            data-retention-period="{{ old('retention_period') }}"
-            data-parent-id="{{ old('parent_id') }}"
-            data-category="{{ old('category') }}">
+            data-departments='{!! json_encode($category->departments) !!}'
+            data-retention-period="{{ $category->retention_period }}"
+            data-parent-id="{{ $category->parent_id }}"
+            data-category="{{ \App\Category::find($category->parent_id) }}">
     </script>
 @stop

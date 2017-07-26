@@ -26,7 +26,7 @@ class CategoriesController extends Controller {
     public function store(Request $request) {
         $this->validate($request, [
             'name'             => 'required',
-            'attributes'       => 'required',
+            'raw_attributes'   => 'required',
             'departments'      => 'required',
             'retention_period' => 'required',
             'parent_id'        => 'required_if:category,subcategory'
@@ -60,7 +60,9 @@ class CategoriesController extends Controller {
         $category->retention_period = $request->retention_period;
         $category->save();
 
-        (new AttributesController)->create($request->attributes, $category->id);
+        (new AttributesController)->create($request->raw_attributes, $category->id);
+
+        return Category::with('attributes')->get();
 
         return redirect('categories');
     }
