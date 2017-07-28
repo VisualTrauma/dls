@@ -5,8 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model {
-    protected $attributes = ["parent_category_name"];
-
     public function documents() {
         return $this->hasMany(Document::class);
     }
@@ -30,9 +28,5 @@ class Category extends Model {
             case 0: return '<span class="uk-text-bold uk-text-capitalize">NO</span>'; break;
             default: return 'Error'; break;
         }
-    }
-
-    public function setParentCategoryNameAttribute($value) {
-
     }
 }

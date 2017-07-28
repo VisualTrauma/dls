@@ -43,7 +43,9 @@
 
             <div class="uk-navbar-flip uk-float-left">
                 <ul class="uk-navbar-nav user_actions">
-                    <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light">&#xE2C7;</i></a></li>
+                    <li><a href="{{ route('documents.create') }}" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light">&#xE145;</i></a></li>
+                    <li><a href="{{ route('categories.index') }}" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light">&#xE2C7;</i></a></li>
+                    <li><a href="{{ route('documents.index') }}" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light">&#xE241;</i></a></li>
                 </ul>
             </div>
 

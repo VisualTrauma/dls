@@ -22,6 +22,7 @@ class CreateDocumentsTable extends Migration {
             $table->date('date_generated');
             $table->date('retention_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

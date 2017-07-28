@@ -1,4 +1,4 @@
 <?php
 
 Route::resource('categories', 'CategoriesController');
-// Route::resource('documents', 'DocumentsController');
+Route::resource('documents', 'DocumentsController');
