@@ -41,30 +41,10 @@
                 <span class="sSwitchIcon"></span>
             </a>
 
-            <div id="menu_top_dropdown" class="uk-float-left uk-hidden-small">
-                <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
-                    <a href="#" class="top_menu_toggle"><i class="material-icons md-24">&#xE8F0;</i></a>
-                    <div class="uk-dropdown uk-dropdown-width-3">
-                        <div class="uk-grid uk-dropdown-grid">
-                            <div class="uk-width-1">
-                                <div class="uk-grid uk-grid-width-medium-1-3 uk-margin-bottom uk-text-center">
-                                    <a href="{{ url('home') }}" class="uk-margin-top">
-                                        <i class="material-icons md-36 md-color-light-green-600">&#xE88A;</i>
-                                        <span class="uk-text-muted uk-display-block">Home</span>
-                                    </a>
-                                    <a href="{{ url('documents') }}" class="uk-margin-top">
-                                        <i class="material-icons md-36 md-color-purple-600">&#xE24D;</i>
-                                        <span class="uk-text-muted uk-display-block">Documents</span>
-                                    </a>
-                                    <a href="{{ url('categories') }}" class="uk-margin-top">
-                                        <i class="material-icons md-36 md-color-red-600">&#xE2C7;</i>
-                                        <span class="uk-text-muted uk-display-block">Categories</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="uk-navbar-flip uk-float-left">
+                <ul class="uk-navbar-nav user_actions">
+                    <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light">&#xE2C7;</i></a></li>
+                </ul>
             </div>
 
             <div class="uk-navbar-flip">
