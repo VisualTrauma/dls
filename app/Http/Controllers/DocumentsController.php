@@ -16,9 +16,17 @@ class DocumentsController extends Controller
     }
 
     public function create() {
-    	$categories = Category::select('id', 'name')->get();
+        $categories = Category::with('attributes')->select('id', 'name')->get();
+    	$attributes = collect();
+    	foreach($categories as $category) {
+            if($category->attributes->isNotEmpty()) {
+                $attributes->push($category->attributes);
+            }
+        }
+        $attributes = $attributes;
+    	$categories = $categories;
     	$expiring_documents = [];
 
-    	return view('documents.create', compact('expiring_documents', 'categories'));
+    	return view('documents.create', compact('expiring_documents', 'categories', 'attributes'));
     }
 }

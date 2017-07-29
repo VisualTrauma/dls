@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Attribute;
 use App\Category;
 use Illuminate\Http\Request;
 
@@ -65,5 +66,10 @@ class CategoriesController extends Controller {
         return Category::with('attributes')->get();
 
         return redirect('categories');
+    }
+
+    public function edit(Category $category) {
+        return $attributes = Attribute::select('raw_name')->where('category_id', $category->id)->get();
+        return view('category.edit', compact('category', 'attributes'));
     }
 }

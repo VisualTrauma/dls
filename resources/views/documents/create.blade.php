@@ -29,19 +29,19 @@
 
 				    <!-- START SELECT CATEGORIES -->
 				    <div class="uk-width-medium-1">
-				        <select class="md-input" name="category_id" data-md-selectize>
+				        <select class="md-input" name="category_id" style="height: 40px; color: #888888; cursor: pointer" v-model="category_id" @change="changeCategory(category_id)">
 				            <option class="uk-hidden" value="">CATEGORY</option>
+							<option v-for="category in categories" :value="category.id">@{{ category.name }}</option>
 				        </select>
 				        <span class="uk-form-help-block"></span>
 				    </div>
 				    <!-- END SELECT CATEGORIES -->
 
-				    <!-- START ATTRIBUTES -->
-				    <div class="uk-width-medium-1 uk-hidden">
-				        <input class="md-input" placeholder="" style="color: #757575;">
-				        <span class="uk-form-help-block"></span>
-				    </div>
-				    <!-- END ATTRIBUTES -->
+					<!-- START ATTRIBUTES -->
+					<div class="uk-width-medium-1" v-for="attribute in selectedCategoryAttributes" v-if="categoryIsChanged">
+						<input class="md-input" :name="attribute.modified_name" :placeholder="attribute.raw_name.toUpperCase()">
+					</div>
+					<!-- END ATTRIBUTES -->
 
 				    <!-- START DATEPICKER -->
 				    <div class="uk-width-medium-1">
@@ -91,17 +91,38 @@
     <script> var clipboard = new Clipboard('#copy_btn'); console.log(clipboard); </script>
 
     <script>
-    	var categories = {!! json_encode($categories) !!}
-    	category_options = ''
+    	new Vue({
+			el: '#upload-form',
+			data: {
+			    categoryIsChanged: false,
+				selectedCategoryAttributes: [],
+				category_id: '',
+				categories: [],
+				attributes: []
+			},
+			created() {
+			    let self = this
+			    axios.get("{{ url('api/categories') }}")
+				.then(response => {
+				    self.categories = response.data
+				})
 
-    	for (let category of categories) {
-    		if(category_options == '') { category_options = '<option value="' + category["id"] + '">' + category["name"] + '</option>' }
-    		else {
-    			category_options += '<option value="' + category["id"] + '">' + category["name"] + '</option>'
-    		}
-    	}
-
-    	$('select[name="category_id"]').append(category_options)
-    	$('select[name="category_id"]').selectpicker('refresh')
+                axios.get("{{ url('api/attributes') }}")
+                    .then(response => {
+                        self.attributes = response.data
+                    })
+			},
+			methods: {
+				changeCategory(category_id) {
+				    let self = this
+				    this.attributes.forEach(element => {
+				        if(category_id == element.category_id) {
+				            self.selectedCategoryAttributes.push(element)
+						}
+					})
+					this.categoryIsChanged = true
+				}
+			}
+		})
     </script>
 @stop
